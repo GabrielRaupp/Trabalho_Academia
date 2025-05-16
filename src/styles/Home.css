@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    background-color: #121212;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .home-container {
+    width: 100%;
+  }
+  
+  /* NAVBAR */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #006644;
+    padding: 16px 24px;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .btn-navbar {
+    background-color: #00ff88;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  /* HERO */
+  .hero {
+    background: url('/src/assets/fundo.png') no-repeat center center;
+    background-size: cover;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 8%;
+    position: relative;
+  }
+  
+  .hero-content {
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 40px 30px;
+    border-radius: 8px;
+  }
+  
+  .hero-content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #ffffff;
+  }
+  
+  .btn-hero {
+    background-color: #00ff88;
+    color: black;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  /* SETA PARA BAIXO */
+  .scroll-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+    padding: 20px;
+    text-decoration: none;
+  }
+  
+  .arrow {
+    font-size: 40px;
+    color: #00ff88;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(8px); }
+    60% { transform: translateY(4px); }
+  }
+  
+  
+  /* BENEFÍCIOS */
+  .benefits {
+    background-color: #1e1e1e;
+    padding: 60px 40px;
+  }
+  
+  .benefits h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  
+  .benefits ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
