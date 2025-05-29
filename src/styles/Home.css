@@ -64,9 +64,8 @@ html, body {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
               url('/fundo.png') center center / cover no-repeat;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 40px;
+  align-items: flex-end;
+  padding: 0 40px 80px;
   position: relative;
   box-sizing: border-box;
 }
@@ -76,6 +75,9 @@ html, body {
   width: 100%;
   color: #ffffff;
   animation: fadeInUp 0.8s ease;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 20px;
 }
 
 .hero-content h1 {
@@ -193,14 +195,15 @@ html, body {
 
   .hero {
     flex-direction: column;
-    justify-content: center;
-    padding: 40px 20px;
+    justify-content: flex-end;
+    padding: 40px 20px 80px;
     height: auto;
     min-height: 100vh;
   }
 
   .hero-content {
     text-align: center;
+    margin: 0;
   }
 
   .hero-content h1 {
