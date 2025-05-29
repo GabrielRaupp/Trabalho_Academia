@@ -1,124 +1,85 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Cadastro.css';
 
 function Cadastro() {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
     nome: '',
     email: '',
     senha: '',
     idade: '',
     peso: '',
-    altura: '',
+    altura: ''
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const empty = Object.values(form).some(val => !val);
-    if (empty) return alert('Por favor, preencha todos os campos.');
-
-    console.log('Dados cadastrados:', form);
+    const { nome, email, senha, idade, peso, altura } = form;
+    if (!nome || !email || !senha || !idade || !peso || !altura) {
+      alert('Preencha todos os campos.');
+      return;
+    }
     navigate('/dashboard');
   };
 
   return (
     <div className="cadastro-container">
-      <div className="form-section">
-        <form className="form" onSubmit={handleSubmit}>
+      <div className="cadastro-form-wrapper">
+        <form className="cadastro-form" onSubmit={handleSubmit}>
           <h2>Cadastro</h2>
 
-          <div className="input-block">
-            <label>Nome:</label>
-            <input
-              type="text"
-              name="nome"
-              value={form.nome}
-              onChange={handleChange}
-              placeholder="João da Silva"
-            />
-          </div>
+          <label>Nome:</label>
+          <input type="text" name="nome" value={form.nome} onChange={handleChange} placeholder="João da Silva" />
 
-          <div className="input-block">
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="email@email.com"
-            />
-          </div>
+          <label>Email:</label>
+          <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="email@email.com" />
 
-          <div className="input-block">
-            <label>Senha:</label>
-            <input
-              type="password"
-              name="senha"
-              value={form.senha}
-              onChange={handleChange}
-              placeholder="••••••••"
-            />
-          </div>
+          <label>Senha:</label>
+          <input type="password" name="senha" value={form.senha} onChange={handleChange} placeholder="••••••••" />
 
-          <div className="input-group">
+          <div className="inline-fields">
             <div>
               <label>Idade:</label>
-              <input
-                type="number"
-                name="idade"
-                value={form.idade}
-                onChange={handleChange}
-                placeholder="Ex: 25"
-                min="10"
-                max="120"
-              />
+              <select name="idade" value={form.idade} onChange={handleChange}>
+                <option value="">Selecione</option>
+                {Array.from({ length: 100 }, (_, i) => (
+                  <option key={i} value={i + 1}>{i + 1}</option>
+                ))}
+              </select>
             </div>
             <div>
-              <label>Peso (kg):</label>
-              <input
-                type="number"
-                name="peso"
-                value={form.peso}
-                onChange={handleChange}
-                placeholder="Ex: 70.5"
-                step="0.1"
-                min="30"
-                max="250"
-              />
+              <label>Peso:</label>
+              <select name="peso" value={form.peso} onChange={handleChange}>
+                <option value="">Selecione</option>
+                {Array.from({ length: 200 }, (_, i) => (
+                  <option key={i} value={i + 1}>{i + 1} kg</option>
+                ))}
+              </select>
             </div>
             <div>
-              <label>Altura (m):</label>
-              <input
-                type="number"
-                name="altura"
-                value={form.altura}
-                onChange={handleChange}
-                placeholder="Ex: 1.75"
-                step="0.01"
-                min="1.30"
-                max="2.30"
-              />
+              <label>Altura:</label>
+              <select name="altura" value={form.altura} onChange={handleChange}>
+                <option value="">Selecione</option>
+                {Array.from({ length: 100 }, (_, i) => {
+                  const val = (1 + i * 0.01).toFixed(2);
+                  return <option key={val} value={val}>{val} m</option>;
+                })}
+              </select>
             </div>
           </div>
 
-          <button type="submit" className="btn-submit">Fazer Cadastro</button>
-          <Link to="/" className="btn-back">Voltar para o início</Link>
+          <button type="submit">Faça seu cadastro</button>
         </form>
       </div>
 
-      <div className="banner-section">
-        <div className="banner-overlay">
-          <h2>Faça Cadastro</h2>
-          <p>E aproveite o mundo da matemática</p>
-        </div>
+      <div className="cadastro-banner">
+        <h1>Faça Cadastro</h1>
+        <p>E aproveite o mundo da matemática</p>
       </div>
     </div>
   );

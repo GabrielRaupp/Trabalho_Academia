@@ -1,54 +1,71 @@
 .alimentos-container {
-    min-height: 100vh;
-    background: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)),
-                url('/src/assets/costas.jpg') no-repeat center center;
-    background-size: cover;
-    color: #ffffff;
-    font-family: 'Segoe UI', sans-serif;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  min-height: 100vh;
+  width: 100vw; /* Garante que ocupe toda a largura */
+  background: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)),
+              url('/costas.jpg') no-repeat center center;
+  background-size: cover;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.alimentos-container h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #00ff88;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.4);
+  text-align: center;
+}
+
+.alimentos-container ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 700px;
+}
+
+.alimentos-container li {
+  background-color: rgba(30, 30, 30, 0.95);
+  padding: 20px 25px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 5px solid #00ff88;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.alimentos-container li:hover {
+  background-color: #1b1b1b;
+  transform: scale(1.02);
+}
+
+.alimentos-container li strong {
+  font-size: 18px;
+  color: #00ff88;
+}
+
+.alimentos-container li small {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .alimentos-container {
+    padding: 40px 16px;
   }
-  
+
   .alimentos-container h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    color: #00ff88;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(0, 255, 136, 0.4);
+    font-size: 24px;
   }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    max-width: 700px;
+
+  .alimentos-container li {
+    padding: 16px;
   }
-  
-  li {
-    background-color: rgba(30, 30, 30, 0.95);
-    padding: 20px 25px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    border-left: 5px solid #00ff88;
-    transition: transform 0.2s, background 0.3s;
-  }
-  
-  li:hover {
-    background-color: #1b1b1b;
-    transform: scale(1.02);
-  }
-  
-  li strong {
-    font-size: 18px;
-    color: #00ff88;
-  }
-  
-  li small {
-    display: block;
-    margin-top: 8px;
-    font-size: 14px;
-    color: #ccc;
-  }
-  
+}

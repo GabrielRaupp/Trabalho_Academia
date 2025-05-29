@@ -7,31 +7,36 @@ function Home() {
     <div className="home-container">
       <nav className="navbar">
         <div className="logo">GymCalc</div>
-        <Link to="/cadastro" className="btn-navbar">Faça seu cadastro</Link>
+        <Link to="/login" className="btn-navbar">Faça o Login</Link>
       </nav>
 
       <section className="hero">
         <div className="hero-content">
-            <h1>Mude sua vida hoje mesmo, seu infeliz</h1>
-            <Link to="/cadastro" className="btn-hero">Faça seu cadastro</Link>
+          <h1>Mude sua vida hoje mesmo</h1>
+          <Link to="/cadastro" className="btn-hero">Faça seu cadastro</Link>
         </div>
-        </section>
+      </section>
 
-
-        <a href="#final" className="scroll-down">
-        <span className="arrow">&#8595;</span>
-        </a>
+      <a href="#final" className="scroll-down">
+        <span className="arrow">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 4V16M10 16L5 11M10 16L15 11"
+                  stroke="black" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </span>
+      </a>
 
       <section className="benefits">
-  <h2>Com nosso app, você poderá:</h2>
-    <ul>
-        <li>Realizar cálculos precisos para sua rotina de treino e dieta</li>
-        <li>Acompanhar sua evolução física com dados personalizados</li>
-        <li>Tomar decisões melhores baseadas na sua composição corporal</li>
-    </ul>
-    </section>
+        <h2>Com nosso app, você poderá:</h2>
+        <ul>
+          <li>Realizar cálculos precisos para sua rotina de treino e dieta</li>
+          <li>Acompanhar sua evolução física com dados personalizados</li>
+          <li>Tomar decisões melhores baseadas na sua composição corporal</li>
+        </ul>
+      </section>
 
-    <div id="final" style={{ height: '1px' }}></div>
+      <div id="final" style={{ height: '1px' }}></div>
     </div>
   );
 }
