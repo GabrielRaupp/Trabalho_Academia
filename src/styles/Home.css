@@ -33,11 +33,12 @@ html, body {
 .logo {
   font-size: 28px;
   font-weight: 700;
-  color: #ffffff;
+  color: #ffffff; /* branco fixo */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+/* BOTÃO NAVBAR - LOGIN */
 .btn-navbar {
   background-color: #00ff88;
   color: #000;
@@ -53,6 +54,7 @@ html, body {
 
 .btn-navbar:hover {
   background-color: #00e67e;
+  color: #ffffff; /* cor da letra branca no hover */
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 255, 136, 0.3);
 }
@@ -87,7 +89,7 @@ html, body {
   line-height: 1.2;
 }
 
-/* BOTÃO PRINCIPAL */
+/* BOTÃO PRINCIPAL - CADASTRO */
 .btn-hero {
   background-color: #00ff88;
   color: #000;
@@ -102,6 +104,7 @@ html, body {
 
 .btn-hero:hover {
   background-color: #00e67e;
+  color: #ffffff; /* cor da letra branca no hover */
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(0, 255, 136, 0.35);
 }

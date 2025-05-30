@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
   Chart as ChartJS,
@@ -54,16 +54,59 @@ const options = {
 };
 
 function Dashboard() {
+  const navigate = useNavigate();
+  const PAL_DEFAULT = 1.6;
+
+  const [tmb, setTmb] = useState(null);
+  const [get, setGet] = useState(null);
+
+  useEffect(() => {
+    const tmbStorage = localStorage.getItem('tmb');
+    const getStorage = localStorage.getItem('get');
+    if (tmbStorage) setTmb(tmbStorage);
+    if (getStorage) setGet(getStorage);
+  }, []);
+
+  const handleEditTMB = () => {
+    const novoTmb = prompt('Digite o novo TMB (kcal):', tmb || '');
+    if (novoTmb !== null && !isNaN(novoTmb) && novoTmb > 0) {
+      localStorage.setItem('tmb', novoTmb);
+      setTmb(novoTmb);
+      const novoGet = (parseFloat(novoTmb) * PAL_DEFAULT).toFixed(1);
+      localStorage.setItem('get', novoGet);
+      setGet(novoGet);
+    }
+  };
+
+  const handleEditGET = () => {
+    const novoGet = prompt('Digite o novo GET (kcal):', get || '');
+    if (novoGet !== null && !isNaN(novoGet) && novoGet > 0) {
+      localStorage.setItem('get', novoGet);
+      setGet(novoGet);
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
         <h2 className="logo">GymCalc</h2>
         <nav>
-        <Link to="/" className="sidebar-btn active"><span>🏠</span> Home</Link>
-        <Link to="/calculadora" className="sidebar-btn"><span>🧮</span> Calculadora</Link>
-        <Link to="/alimentos" className="sidebar-btn"><span>🥗</span> Nutrição</Link>
-        </nav>
+          <Link to="/" className="sidebar-btn active"><span>🏠</span> Home</Link>
 
+          <button className="sidebar-btn" onClick={() => navigate('/calculadora?tipo=gastoCalorico')}>
+            🔥 Gasto Calórico
+          </button>
+
+          <button className="sidebar-btn" onClick={() => navigate('/calculadora?tipo=nutricao')}>
+            🥦 Nutrição
+          </button>
+
+          <button className="sidebar-btn" onClick={() => navigate('/calculadora?tipo=hidratacao')}>
+            💧 Hidratação
+          </button>
+
+          <Link to="/alimentos" className="sidebar-btn"><span>🥗</span> Alimentos</Link>
+        </nav>
       </aside>
 
       <main className="dashboard-main">
@@ -79,17 +122,16 @@ function Dashboard() {
           </div>
 
           <div className="action-panel">
-            <button><span>🏠</span> TBM</button>
-            <button><span>🏠</span> GET</button>
-            <button><span>🏠</span> Caloria</button>
-            <button><span>🏠</span> Caloria</button>
-            <button><span>🏠</span> Caloria</button>
+            <h3>Ações rápidas</h3>
+
+            <button onClick={handleEditTMB}><span>🔥</span> TMB: {tmb ? `${tmb} kcal` : '---'}</button>
+            <button onClick={handleEditGET}><span>⚡</span> GET: {get ? `${get} kcal` : '---'}</button>
+            <button><span>📊</span> Calorias</button>
+            <button><span>🥗</span> Nutrição</button>
           </div>
         </section>
 
-        <footer className="dashboard-footer">
-      
-        </footer>
+        <footer className="dashboard-footer"></footer>
       </main>
     </div>
   );
